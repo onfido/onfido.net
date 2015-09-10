@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onfido", "Onfido\Onfido.csproj", "{667CCDDC-F8F4-44DD-AC19-40E6CE48ED50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Onfido.Test", "Onfido.Test\Onfido.Test.csproj", "{A8C58795-2CA4-4132-B18D-A885DAA344DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{667CCDDC-F8F4-44DD-AC19-40E6CE48ED50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{667CCDDC-F8F4-44DD-AC19-40E6CE48ED50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{667CCDDC-F8F4-44DD-AC19-40E6CE48ED50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{667CCDDC-F8F4-44DD-AC19-40E6CE48ED50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8C58795-2CA4-4132-B18D-A885DAA344DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8C58795-2CA4-4132-B18D-A885DAA344DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8C58795-2CA4-4132-B18D-A885DAA344DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8C58795-2CA4-4132-B18D-A885DAA344DB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
