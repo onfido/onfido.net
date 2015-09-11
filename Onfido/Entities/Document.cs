@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Onfido.Types
+namespace Onfido.Entities
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public enum DocumentType {

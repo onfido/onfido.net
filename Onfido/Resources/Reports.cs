@@ -1,22 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Onfido.Types;
+﻿using Onfido.Entities;
+using Onfido.Http;
 
 namespace Onfido.Resources
 {
     public class Reports
     {
-        public Report Find()
+        private IRequestor _requestor;
+
+        public Reports() : this(new Requestor())
         {
-            throw new NotImplementedException();
         }
 
-        public Report All()
+        public Reports(IRequestor requestor)
         {
-            throw new NotImplementedException();
+            _requestor = requestor;
+        }
+
+        public Report Find(string checkId, string reportId)
+        {
+            const string pathFormat = "checks/{0}/reports/{1}";
+
+            return _requestor.Get<Report>(string.Format(pathFormat, checkId, reportId));           
+        }
+
+        public Report All(string checkId)
+        {
+            const string pathFormat = "checks/{0}/reports";
+
+            return _requestor.Get<Report>(string.Format(pathFormat, checkId));
         }
     }
 }

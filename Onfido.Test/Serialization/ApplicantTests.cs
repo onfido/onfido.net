@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using Onfido.Types;
+using Onfido.Entities;
 
 namespace Onfido.Test.Serialization
 {

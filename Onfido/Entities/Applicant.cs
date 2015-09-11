@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Onfido.Types
+namespace Onfido.Entities
 {
     public class Applicant
     {

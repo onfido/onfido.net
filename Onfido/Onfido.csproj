@@ -45,13 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Resources\OnfidoResource.cs" />
-    <Compile Include="Types\Address.cs" />
-    <Compile Include="Types\Applicant.cs" />
-    <Compile Include="Types\Check.cs" />
-    <Compile Include="Types\Document.cs" />
-    <Compile Include="Types\IdNumber.cs" />
-    <Compile Include="Types\Report.cs" />
+    <Compile Include="Http\IOnfidoHttpClient.cs" />
+    <Compile Include="Http\IRequestor.cs" />
+    <Compile Include="Http\OnfidoHttpClient.cs" />
+    <Compile Include="Http\Requestor.cs" />
+    <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\Applicant.cs" />
+    <Compile Include="Entities\Check.cs" />
+    <Compile Include="Entities\Document.cs" />
+    <Compile Include="Entities\IdNumber.cs" />
+    <Compile Include="Entities\Report.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Applicants.cs" />
     <Compile Include="Resources\Checks.cs" />

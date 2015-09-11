@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Onfido.Types
+namespace Onfido.Entities
 {
     public class Address
     {
