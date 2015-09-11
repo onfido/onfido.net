@@ -13,6 +13,6 @@ namespace Onfido.Http
 
         T Get<T>(string url, NameValueCollection query);
 
-        T Post<T>(string url);
+        T Post<T>(string url, string payload);
     }
 }

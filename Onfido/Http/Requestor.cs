@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,9 +49,18 @@ namespace Onfido.Http
             return JsonConvert.DeserializeObject<T>(response.Content.ToString());
         }
 
-        public T Post<T>(string path)
+        public T Post<T>(string path, string jsonPayload)
         {
-            throw new NotImplementedException();
+            var uriBuilder = new UriBuilder
+            {
+                Scheme = Uri.UriSchemeHttps,
+                Host = _baseUrl,
+                Path = path
+            };
+
+            var response = _http.Post(uriBuilder.Uri, new StringContent(jsonPayload, Encoding.UTF8, "application/json"));
+
+            return JsonConvert.DeserializeObject<T>(response.Content.ToString());
         }
     }
 }

@@ -66,8 +66,7 @@ namespace Onfido.Resources
 
             var payload = JsonConvert.SerializeObject(applicant);
 
-            //return _requestor.Get<Applicant>(url, payload);
-            throw new NotImplementedException();
+            return _requestor.Post<Applicant>(path, payload);
         }
 
         public Applicant Find(string applicantId)
