@@ -4,6 +4,37 @@ namespace Onfido.Test.Setup
 {
     public class AddressGenerator
     {
+<<<<<<< HEAD
+=======
+        /*
+              ""flat_number"": null,
+              ""building_name"": null,
+              ""building_number"": ""100"",
+              ""street"": ""Main Street"",
+              ""sub_street"": null,
+              ""state"": null,
+              ""town"": ""London"",
+              ""postcode"": ""SW4 6EH"",
+              ""country"": ""GBR"",
+              ""start_date"": ""2013-01-01"",
+              ""end_date"": null
+            },
+            {
+              ""flat_number"": ""Apt 2A"",
+              ""building_name"": null,
+              ""building_number"": ""1017"",
+              ""street"": ""Oakland Ave"",
+              ""sub_street"": null,
+              ""town"": ""Piedmont"",
+              ""state"": ""CA"",
+              ""postcode"": ""94611"",
+              ""country"": ""USA"",
+              ""start_date"": ""2006-03-07"",
+              ""end_date"": ""2012-12-31""
+            }
+              ]
+    */
+>>>>>>> 5ced94fecbb6ea5c960f10be823e499a85ff526b
         public static Address Address1()
         {
             return new Address
