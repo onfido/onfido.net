@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using System.Collections.Generic;
 using Onfido.Resources.InternalEntities;
 using Onfido.Entities;
 using Onfido.Http;
 using System.Collections.Specialized;
+using System.Web;
 
 namespace Onfido.Resources
 {
@@ -50,7 +49,7 @@ namespace Onfido.Resources
         {
             const string path = "applicants";
 
-            var query = new NameValueCollection();
+            var query = HttpUtility.ParseQueryString(string.Empty);
 
             query["page"] = page.ToString();
             query["per_page"] = perPage.ToString();

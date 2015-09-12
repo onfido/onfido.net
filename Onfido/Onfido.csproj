@@ -7,8 +7,8 @@
     <ProjectGuid>{667CCDDC-F8F4-44DD-AC19-40E6CE48ED50}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Onfido.NET</RootNamespace>
-    <AssemblyName>Onfido.NET</AssemblyName>
+    <RootNamespace>Onfido</RootNamespace>
+    <AssemblyName>Onfido</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -37,6 +37,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configuration.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Http\IOnfidoHttpClient.cs" />
     <Compile Include="Http\IRequestor.cs" />
     <Compile Include="Http\OnfidoHttpClient.cs" />
