@@ -8,21 +8,15 @@ namespace Onfido.Http
 {
     public class Requestor : IRequestor
     {        
-        private const string _defaultOnfidoUrl = "api.onfido.com/v1";
-
         private IOnfidoHttpClient _http;
-
-        private string _baseUrl;
-
-        public Requestor() : this(new OnfidoHttpClient(), _defaultOnfidoUrl)
+        
+        public Requestor() : this(new OnfidoHttpClient())
         {
         }
 
-        public Requestor(IOnfidoHttpClient http, string baseUrl)
+        public Requestor(IOnfidoHttpClient http)
         {
-            _http = http;
-
-            _baseUrl = baseUrl;
+            _http = http;            
         }
 
         public T Get<T>(string path)
@@ -35,9 +29,9 @@ namespace Onfido.Http
             var uriBuilder = new UriBuilder()
             {
                 Scheme = Uri.UriSchemeHttps,
-                Host = _baseUrl,
-                Path = path,
-                Query = query.ToString(),
+                Host = Onfido.Settings.Hostname,
+                Path = string.Format("{0}/{1}", Onfido.Settings.ApiVersion, path),
+                Query = query != null ? query.ToString() : null
             };
 
             var response = _http.Get(uriBuilder.Uri);
@@ -51,12 +45,12 @@ namespace Onfido.Http
             var uriBuilder = new UriBuilder
             {
                 Scheme = Uri.UriSchemeHttps,
-                Host = _baseUrl,
-                Path = path
+                Host = Onfido.Settings.Hostname,
+                Path = string.Format("{0}/{1}", Onfido.Settings.ApiVersion, path)
             };
 
             var response = _http.Post(uriBuilder.Uri, new StringContent(jsonPayload, Encoding.UTF8, "application/json"));
-
+            
             return JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
         }
     }

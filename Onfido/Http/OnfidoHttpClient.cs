@@ -35,7 +35,7 @@ namespace Onfido.Http
                 Content = content
             };
 
-            request.Headers.Add("Authorization", string.Format("Token token={0}", Configuration.GetApiToken()));
+            request.Headers.Add("Authorization", string.Format("Token token={0}", Settings.GetApiToken()));
 
             return _http.SendAsync(request).Result;
         }

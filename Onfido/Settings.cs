@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace Onfido
 {
-    public static class Configuration
+    public static class Settings
     {
+        public const string Hostname = "api.onfido.com";
+
+        public const string ApiVersion = "v1";
+
         private static string _apiToken;
 
         public static string GetApiToken()
