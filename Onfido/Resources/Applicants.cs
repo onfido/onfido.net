@@ -1,49 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using Onfido.Resources.InternalEntities;
 using Onfido.Entities;
 using Onfido.Http;
 using System.Collections.Specialized;
 
 namespace Onfido.Resources
 {
-    public class CreateApplicant
-    {
-        [JsonProperty("title")]
-        public string Title;
-
-        [JsonProperty("first_name")]
-        public string FirstName;
-
-        [JsonProperty("middle_name")]
-        public string MiddleName;
-
-        [JsonProperty("last_name")]
-        public string LastName;
-
-        [JsonProperty("gender")]
-        public string Gender;
-
-        [JsonProperty("dob")]
-        public DateTime DateOfBirth;
-
-        [JsonProperty("telephone")]
-        public string Telephone;
-
-        [JsonProperty("mobile")]
-        public string Mobile;
-
-        [JsonProperty("country")]
-        public string Country;
-
-        [JsonProperty("id_numbers")]
-        public IEnumerable<IdNumber> IdNumbers;
-
-        [JsonProperty("addresses")]
-        public IEnumerable<Address> Addresses;
-    }
-
-    public class Applicants
+    public class Applicants : OnfidoResource
     {
         private const int _defaultPage = 1;
 
@@ -60,11 +25,11 @@ namespace Onfido.Resources
             _requestor = requestor;
         }
 
-        public Applicant Create(CreateApplicant applicant)
+        public Applicant Create(Applicant applicant)
         {
             const string path = "applicants";
 
-            var payload = JsonConvert.SerializeObject(applicant);
+            var payload = SerializeEntity(applicant);
 
             return _requestor.Post<Applicant>(path, payload);
         }
@@ -90,7 +55,9 @@ namespace Onfido.Resources
             query["page"] = page.ToString();
             query["per_page"] = perPage.ToString();
 
-            return _requestor.Get<IEnumerable<Applicant>>(path, query);
+            var applicants = _requestor.Get<ApplicantResponse>(path, query);
+
+            return applicants.applicants;
         }
     }
 }

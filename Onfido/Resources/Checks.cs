@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Onfido.Entities;
 using Onfido.Http;
 
-namespace Onfido.Services
+namespace Onfido.Resources
 {
-    public class Checks
+    public class Checks : OnfidoResource
     {
         private IRequestor _requestor;
 
@@ -21,11 +17,13 @@ namespace Onfido.Services
             _requestor = requestor;
         }
 
-        public Check Create()
+        public Check Create(string applicantId, Check check)
         {
             const string pathFormat = "applicants/{0}/checks";
 
-            throw new NotImplementedException();
+            var payload = SerializeEntity(check);
+
+            return _requestor.Post<Check>(string.Format(pathFormat, applicantId), payload);
         }
 
         public Check Find(string applicantId, string checkId)

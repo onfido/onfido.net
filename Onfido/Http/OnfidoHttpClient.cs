@@ -18,12 +18,26 @@ namespace Onfido.Http
 
         public HttpResponseMessage Get(Uri uri)
         {
-            return _http.GetAsync(uri).Result;
+            return Send(HttpMethod.Get, uri, null);
         }
 
         public HttpResponseMessage Post(Uri uri, HttpContent payload)
         {
-            return _http.PostAsync(uri, payload).Result;
+            return Send(HttpMethod.Post, uri, payload);
+        }
+
+        private HttpResponseMessage Send(HttpMethod method, Uri uri, HttpContent content)
+        {
+            var request = new HttpRequestMessage()
+            {
+                RequestUri = uri,
+                Method = method,
+                Content = content
+            };
+
+            request.Headers.Add("Authorization", string.Format("Token token={0}", Configuration.GetApiToken()));
+
+            return _http.SendAsync(request).Result;
         }
     }
 }
