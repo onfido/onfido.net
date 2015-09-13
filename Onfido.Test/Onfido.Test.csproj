@@ -63,11 +63,14 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Integration\ApplicantResourceTests.cs" />
+    <Compile Include="Integration\CheckResourceTests.cs" />
     <Compile Include="Serialization\ApplicantTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup\AddressGenerator.cs" />
     <Compile Include="Setup\ApplicantGenerator.cs" />
+    <Compile Include="Setup\CheckGenerator.cs" />
     <Compile Include="Setup\IdNumberGenerator.cs" />
+    <Compile Include="Setup\ReportGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

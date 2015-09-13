@@ -23,9 +23,6 @@ namespace Onfido.Test.Integration
 
         public ApplicantsTestBase()
         {
-            var stubResponse = new HttpResponseMessage();
-            stubResponse.Content = new StringContent(ApplicantGenerator.Json());
-
             HttpClient = MockRepository.GenerateStub<IOnfidoHttpClient>();
 
             ApplicantService = new Applicants(new Requestor(HttpClient));
