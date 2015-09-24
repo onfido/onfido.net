@@ -26,15 +26,10 @@ namespace Onfido.Http
 
         public T Get<T>(string path, NameValueCollection query)
         {
-            var uriBuilder = new UriBuilder()
-            {
-                Scheme = Uri.UriSchemeHttps,
-                Host = Onfido.Settings.Hostname,
-                Path = string.Format("{0}/{1}", Onfido.Settings.ApiVersion, path),
-                Query = query != null ? query.ToString() : null
-            };
+            var builder = getUriBuilder(path);
+            builder.Query = query != null ? query.ToString() : null;
 
-            var response = _http.Get(uriBuilder.Uri);
+            var response = _http.Get(builder.Uri);
 
             var responseText = response.Content.ReadAsStringAsync().Result;
             return JsonConvert.DeserializeObject<T>(responseText);
@@ -42,16 +37,28 @@ namespace Onfido.Http
 
         public T Post<T>(string path, string jsonPayload)
         {
+            return Post<T>(path, new StringContent(jsonPayload, Encoding.UTF8, "application/json"));
+        }
+
+        public T Post<T>(string path, HttpContent payload)
+        {
+            var builder = getUriBuilder(path);
+
+            var response = _http.Post(builder.Uri, payload);
+
+            return JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
+        }
+
+        private UriBuilder getUriBuilder(string path)
+        {
             var uriBuilder = new UriBuilder
             {
                 Scheme = Uri.UriSchemeHttps,
-                Host = Onfido.Settings.Hostname,
+                Host =  Onfido.Settings.Hostname,
                 Path = string.Format("{0}/{1}", Onfido.Settings.ApiVersion, path)
             };
 
-            var response = _http.Post(uriBuilder.Uri, new StringContent(jsonPayload, Encoding.UTF8, "application/json"));
-            
-            return JsonConvert.DeserializeObject<T>(response.Content.ReadAsStringAsync().Result);
+            return uriBuilder;
         }
     }
 }

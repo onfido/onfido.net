@@ -2,35 +2,36 @@
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System.ComponentModel;
 
 namespace Onfido.Entities
 {
     [JsonConverter(typeof(StringEnumConverter))]
     public enum DocumentType {
-        [EnumMember(Value = "passport")]
+        [Description("passport")]
         Passport,
-        [EnumMember(Value = "national_identity_card")]
+        [Description("national_identity_card")]
         NationalIdentityCard,
-        [EnumMember(Value = "work_permit")]
+        [Description("work_permit")]
         WorkPermit,
-        [EnumMember(Value = "driving_license")]
+        [Description("driving_license")]
         DrivingLicense,
-        [EnumMember(Value = "national_insurance")]
+        [Description("national_insurance")]
         NationalInsurance,
-        [EnumMember(Value = "birth_certificate")]
+        [Description("birth_certificate")]
         BirthCertificate,
-        [EnumMember(Value = "bank_statement")]
+        [Description("bank_statement")]
         BankStatement,
-        [EnumMember(Value = "unknown")]
+        [Description("unknown")]
         Unknown
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
     public enum DocumentSide
     {
-        [EnumMember(Value = "front")]
+        [Description("front")]
         Front, 
-        [EnumMember(Value = "back")]
+        [Description("back")]
         Back
     }
 
