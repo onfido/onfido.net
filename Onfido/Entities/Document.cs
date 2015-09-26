@@ -59,6 +59,6 @@ namespace Onfido.Entities
         public DocumentType Type;
 
         [JsonProperty("side")]
-        public DocumentSide Side;
+        public DocumentSide? Side;
     }
 }

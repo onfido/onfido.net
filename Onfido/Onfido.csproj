@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api.cs" />
     <Compile Include="Resources\InternalEntities\CheckResponse.cs" />
     <Compile Include="Resources\InternalEntities\DocumentForm.cs" />
     <Compile Include="Settings.cs" />
