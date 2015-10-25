@@ -37,11 +37,11 @@ namespace Onfido.Resources
 
             using (var formData = new MultipartFormDataContent())
             {
-                formData.Add(new StringContent(Utilities.EnumHelper.GetDescription(type)), "type");
+                formData.Add(new StringContent(Utilities.EnumHelper.GetDescription(type)), "\"type\"");
 
                 if (side != null)
                 {
-                    formData.Add(new StringContent(Utilities.EnumHelper.GetDescription(side.Value), Encoding.UTF8), "side");
+                    formData.Add(new StringContent(Utilities.EnumHelper.GetDescription(side.Value), Encoding.UTF8), "\"side\"");
                 }
 
                 formData.Add(CreateFileContent(fileStream, "file", mimeType));

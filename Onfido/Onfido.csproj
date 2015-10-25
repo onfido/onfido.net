@@ -51,8 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api.cs" />
+    <Compile Include="Errors\ErrorField.cs" />
     <Compile Include="Resources\InternalEntities\CheckResponse.cs" />
     <Compile Include="Resources\InternalEntities\DocumentForm.cs" />
+    <Compile Include="Resources\InternalEntities\OnfidoApiError.cs" />
+    <Compile Include="Resources\InternalEntities\OnfidoExceptionResponse.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Http\IOnfidoHttpClient.cs" />
     <Compile Include="Http\IRequestor.cs" />
@@ -72,6 +75,7 @@
     <Compile Include="Resources\OnfidoResource.cs" />
     <Compile Include="Resources\Reports.cs" />
     <Compile Include="Utilities\EnumHelper.cs" />
+    <Compile Include="Errors\OnfidoApiException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

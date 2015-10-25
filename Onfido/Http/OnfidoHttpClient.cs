@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Net.Http;
+using Newtonsoft.Json;
+using Onfido.Resources.InternalEntities;
+using Onfido.Errors;
 
 namespace Onfido.Http
 {
@@ -37,7 +40,28 @@ namespace Onfido.Http
 
             request.Headers.Add("Authorization", string.Format("Token token={0}", Settings.GetApiToken()));
 
-            return _http.SendAsync(request).Result;
+            var response = _http.SendAsync(request).Result;
+
+            if (!response.IsSuccessStatusCode)
+            {
+                if (response.Content != null)
+                {
+                    var errorResponse = JsonConvert.DeserializeObject<OnfidoExceptionResponse>(response.Content.ReadAsStringAsync().Result);
+
+                    var e = new OnfidoApiException
+                    {
+                        Id = errorResponse.Error.Id,
+                        Type = errorResponse.Error.Type,
+                        ErrorMessage = errorResponse.Error.ErrorMessage,
+                        Fields = errorResponse.Error.Fields
+                    };
+                    throw e;
+                }
+
+                throw new Exception("An error occurred communicating with Onfido");
+            }
+
+            return response;
         }
     }
 }
