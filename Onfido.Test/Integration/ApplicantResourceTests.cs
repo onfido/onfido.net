@@ -111,7 +111,7 @@ namespace Onfido.Test.Integration
         public When_calling_Applicants_all_service() : base()
         {
             var stubResponse = new HttpResponseMessage();
-            stubResponse.Content = new StringContent(ApplicantGenerator.Json());
+            stubResponse.Content = new StringContent(@"{ ""applicants"": [" + ApplicantGenerator.Json() + "]}");
 
             HttpClient.Stub(client => client.Post(Arg<Uri>.Is.Anything, Arg<HttpContent>.Is.Anything))
                 .WhenCalled(c => { throw new Exception("Applicant all should use GET"); });

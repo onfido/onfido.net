@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Onfido.Entities;
 using Onfido.Http;
+using Onfido.Resources.InternalEntities;
 
 namespace Onfido.Resources
 {
@@ -28,7 +29,9 @@ namespace Onfido.Resources
         {
             const string pathFormat = "checks/{0}/reports";
 
-            return _requestor.Get<IEnumerable<Report>>(string.Format(pathFormat, checkId));
+            var reports = _requestor.Get<ReportsResponse>(string.Format(pathFormat, checkId));
+
+            return reports.reports;
         }
     }
 }

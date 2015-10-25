@@ -68,6 +68,7 @@
     <Compile Include="Integration\ApplicantResourceTests.cs" />
     <Compile Include="Integration\CheckResourceTests.cs" />
     <Compile Include="Integration\DocumentsTests.cs" />
+    <Compile Include="Integration\ReportsTests.cs" />
     <Compile Include="Serialization\ApplicantTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup\AddressGenerator.cs" />

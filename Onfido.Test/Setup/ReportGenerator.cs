@@ -9,6 +9,8 @@ namespace Onfido.Test.Setup
 {
     class ReportGenerator
     {
+        public const string CheckId = "8546921-123123-123123";
+
         public static Report Report()
         {
             return new Report
@@ -36,6 +38,14 @@ namespace Onfido.Test.Setup
                 ""breakdown"": { },
                 ""properties"": { }
             }";
+        }
+
+        public static string JsonArray()
+        {
+            return @"{
+                ""reports"" : [ " 
+                + Json() + @"
+            ]}";
         }
 
         public static string ReturnedReportsForCheckTest()
