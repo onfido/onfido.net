@@ -2,21 +2,137 @@
 
 Onfido.NET is a .NET API client for Onfido's REST API.
 
-TODO:
-* setup CI on Travis (only Mono)
-
 # Installation
 
 TODO: 
 * steps for install from nuget
 * steps for install from source
 
-# Usage
+# Usage/Setup
 
-TODO:
-* add all documentation
+To setup your API token you'll need to add a call to ```Onfido.Settings.SetApiToken()``` somewhere in your application.
 
-# Contribution/Testing
+    Onfido.Settings.SetApiToken("whatever_your_token_is");
 
-TODO:
-* describe how to verify testing
+When calling each of the services you can either create an instance of ```Onfido.Api``` - which will allow you to access all the Onfido endpoints from a single object - or you can create separately as required. For each of the examples below, where we have something like
+
+    var Applicant = new Onfido.Resources.Applicants();
+    return Applicant.Create(applicant)
+
+the following is equally valid
+
+    var api = new Onfido.Api();
+    return api.Applicants.Create(applicant);    
+
+## Applicants
+
+The [Applicants](https://onfido.com/documentation#applicants) endpoint supports three operations - ``Create()``, ``Find()``, and ``All()``:
+
+### Create
+
+    var applicants = new Onfido.Resources.Applicants();
+    var applicant = new Applicant {
+    	FirstName = "John",
+    	LastName = "Smith"
+    	// ...
+    };
+
+	var newApplicant = applicants.Create(applicant); 
+
+### Retrieve
+
+    var applicants = new Onfido.Resources.Applicants();
+    var existingApplicant = applicants.Find(applicantId); 
+
+### All
+
+    var applicants = new Onfido.Resources.Applicants();
+    var allApplicants = applicants.All(); 
+    
+The ``All()`` operation also permits pagination
+
+    var applicants = new Onfido.Resources.Applicants();
+    var top10Applicants = applicants.All(1, 10):
+    var next10Applicants = applicants.All(2, 10):
+
+## Documents
+
+The [Documents](https://onfido.com/documentation#documents) endpoint supports a single operation - ``Create()``:
+
+### Create
+
+    var documents = new Onfido.Resources.Documents();
+    var passport = new FileStream(@"./passport.png", FileMode.Open);
+    var document = api.Documents.Create(applicantId, passport, "passport.png", Entities.DocumentType.Passport);
+
+Since you can optionally supply a side, ``Create()`` also allows you to specify which side of a document you're uploading
+
+    var documents = new Onfido.Resources.Documents();
+    var passport = new FileStream(@"./passport.png", FileMode.Open);
+    var document = api.Documents.Create(applicantId, passport, "passport.png", Entities.DocumentType.Passport, Entities.DocumentSide.Front);
+
+The ``Entities.DocumentType`` and ``Entities.DocumentSide`` enums support the following:
+
+    public enum DocumentType {
+        Passport,
+        NationalIdentityCard,
+        WorkPermit,
+        DrivingLicense,
+        NationalInsurance,
+        BirthCertificate,
+        BankStatement,
+        Unknown
+    }
+
+    public enum DocumentSide
+    {
+        Front, 
+        Back
+    }
+
+## Checks
+
+The [Checks](https://onfido.com/documentation#checks) endpoint supports three operations - ``Create()``, ``Find()`` and ``All()``:
+
+### Create
+
+    var checks = new Onfido.Resources.Checks();
+    var check = new Check
+            {
+                Type = CheckType.Standard,
+                Reports = new List<Report>
+                {
+                    new Report { Name = "identity" },
+                    new Report { Name = "document" }
+                }
+            };
+    var new_check = checks.Create(applicant_id, check);
+
+### Find
+
+    var checks = new Onfido.Resources.Checks();
+    var existingCheck = checks.Find(applicantId, checkId);
+
+### All
+
+    var checks = new Onfido.Resources.Checks();
+    var applicantChecks = checks.All(applicantId);
+
+The ``All()`` operation also permits pagination
+
+    var checks = new Onfido.Resources.Checks();
+    var top10Checks = checks.All(1, 10):
+    var next10Checks = checks.All(2, 10):
+
+## Reports
+
+The [Reports](https://onfido.com/documentation#reports) endpoint supports two operations - ``Find()`` and ``All()``:
+
+### Find
+
+    var reports = new Onfido.Resources.Reports();
+    var existingReport = reports.Find(checkId, reportId);
+
+### All
+    var reports = new Onfido.Resources.Reports();
+    var allReports = reports.All(checkId);
