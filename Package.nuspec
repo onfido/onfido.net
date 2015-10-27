@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Onfido.NET</id>
+    <version>0.1.0</version>
+    <authors>Sean McLemon</authors>
+    <owners>Sean McLemon</owners>
+    <licenseUrl>https://raw.githubusercontent.com/smcl/onfido.net/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/smcl/onfido.net</projectUrl>
+    <iconUrl>https://d2q6qpgin2fafe.cloudfront.net/images/favicon@2x-ee7dce6a.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Onfido.NET is a .NET API client for Onfido's REST API. More information at https://onfido.com/documentation and https://github.com/smcl/onfido.net</description>
+    <releaseNotes>Initial beta release.</releaseNotes>
+    <copyright>Copyright 2015 Sean McLemon</copyright>
+    <tags>onfido</tags>
+  </metadata>
+</package>

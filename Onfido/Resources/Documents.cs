@@ -1,12 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Net.Http;
 using Onfido.Entities;
 using Onfido.Http;
 using System.Net.Http.Headers;
-using Onfido.Resources.InternalEntities;
 using System.Text;
-using System.Linq;
 
 namespace Onfido.Resources
 {
@@ -27,7 +24,6 @@ namespace Onfido.Resources
         {
             return Create(applicantId, fileStream, fileName, type, null);
         }
-
 
         public Document Create(string applicantId, Stream fileStream, string fileName, DocumentType type, DocumentSide? side)
         {
