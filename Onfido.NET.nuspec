@@ -14,4 +14,7 @@
     <copyright>Copyright 2015 Sean McLemon</copyright>
     <tags>onfido</tags>
   </metadata>
+  <files>
+    <file src="bin\Onfido.dll" target="lib\net40" />
+  </files>
 </package>
