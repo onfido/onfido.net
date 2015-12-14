@@ -4,9 +4,9 @@ Onfido.NET is a .NET API client for Onfido's REST API.
 
 # Installation
 
-TODO: 
-* steps for install from nuget
-* steps for install from source
+You can obtain Onfido.NET from [nuget](https://www.nuget.org/packages/Onfido.NET) by using the Package Browser, or the Package Manager Console:
+
+    PM> Install-Package Onfido.NET
 
 # Usage/Setup
 
