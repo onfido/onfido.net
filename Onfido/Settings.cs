@@ -10,14 +10,14 @@ namespace Onfido
     {
         public const string Hostname = "api.onfido.com";
 
-        public const string ApiVersion = "v1";
+        private static string _apiVersion = "v2";
 
         private static string _apiToken;
 
         public static string GetApiToken()
         {
-            // TODO: if string.isnullorempty(token) throw an exception? 
-            //       disruptive, but maybe better than doing nothing and 
+            // TODO: if string.isnullorempty(token) throw an exception?
+            //       disruptive, but maybe better than doing nothing and
             //       leaving dev to scratch his/her head.
             return _apiToken;
         }
@@ -25,6 +25,16 @@ namespace Onfido
         public static void SetApiToken(string apiToken)
         {
             _apiToken = apiToken;
+        }
+
+        public static void SetApiVersion(string version)
+        {
+            _apiVersion = version;
+        }
+
+        public static string GetApiVersion()
+        {
+            return _apiVersion;
         }
     }
 }
