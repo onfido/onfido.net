@@ -1,4 +1,4 @@
-# Onfido.NET
+# Onfido.NET ![status](https://ci.appveyor.com/api/projects/status/32r7s2skrgm9ubva/branch/master)
 
 Onfido.NET is a .NET API client for Onfido's REST API.
 
