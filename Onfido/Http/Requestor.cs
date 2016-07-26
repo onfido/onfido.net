@@ -7,16 +7,16 @@ using Newtonsoft.Json;
 namespace Onfido.Http
 {
     public class Requestor : IRequestor
-    {        
+    {
         private IOnfidoHttpClient _http;
-        
+
         public Requestor() : this(new OnfidoHttpClient())
         {
         }
 
         public Requestor(IOnfidoHttpClient http)
         {
-            _http = http;            
+            _http = http;
         }
 
         public T Get<T>(string path)
@@ -55,7 +55,7 @@ namespace Onfido.Http
             {
                 Scheme = Uri.UriSchemeHttps,
                 Host =  Onfido.Settings.Hostname,
-                Path = string.Format("{0}/{1}", Onfido.Settings.ApiVersion, path)
+                Path = string.Format("{0}/{1}", Onfido.Settings.GetApiVersion(), path)
             };
 
             return uriBuilder;

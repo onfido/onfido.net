@@ -14,6 +14,10 @@ To setup your API token you'll need to add a call to ```Onfido.Settings.SetApiTo
 
     Onfido.Settings.SetApiToken("whatever_your_token_is");
 
+Optionally, you may want to set the version of the API that you're calling; this defaults to the latest version of the API.
+
+    Onfido.Settings.SetApiVersion("v2");
+
 When calling each of the services you can either create an instance of ```Onfido.Api``` - which will allow you to access all the Onfido endpoints from a single object - or you can create separately as required. For each of the examples below, where we have something like
 
     var Applicant = new Onfido.Resources.Applicants();
@@ -37,18 +41,18 @@ The [Applicants](https://onfido.com/documentation#applicants) endpoint supports 
     	// ...
     };
 
-	var newApplicant = applicants.Create(applicant); 
+	var newApplicant = applicants.Create(applicant);
 
 ### Retrieve
 
     var applicants = new Onfido.Resources.Applicants();
-    var existingApplicant = applicants.Find(applicantId); 
+    var existingApplicant = applicants.Find(applicantId);
 
 ### All
 
     var applicants = new Onfido.Resources.Applicants();
-    var allApplicants = applicants.All(); 
-    
+    var allApplicants = applicants.All();
+
 The ``All()`` operation also permits pagination
 
     var applicants = new Onfido.Resources.Applicants();
@@ -86,7 +90,7 @@ The ``Entities.DocumentType`` and ``Entities.DocumentSide`` enums support the fo
 
     public enum DocumentSide
     {
-        Front, 
+        Front,
         Back
     }
 

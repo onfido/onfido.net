@@ -60,7 +60,7 @@ namespace Onfido.Test.Integration
         [TestMethod]
         public override void Should_have_called_correct_endpoint()
         {
-            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/checks/{1}/reports/{2}", Settings.ApiVersion, ReportGenerator.CheckId, ReportGenerator.Report().Id));
+            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/checks/{1}/reports/{2}", Settings.GetApiVersion(), ReportGenerator.CheckId, ReportGenerator.Report().Id));
         }
     }
 
@@ -88,7 +88,7 @@ namespace Onfido.Test.Integration
         [TestMethod]
         public override void Should_have_called_correct_endpoint()
         {
-            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/checks/{1}/reports", Settings.ApiVersion, ReportGenerator.CheckId));
+            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/checks/{1}/reports", Settings.GetApiVersion(), ReportGenerator.CheckId));
         }
     }
 }

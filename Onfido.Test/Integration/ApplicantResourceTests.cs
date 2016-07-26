@@ -71,7 +71,7 @@ namespace Onfido.Test.Integration
         [TestMethod]
         public override void Should_have_called_correct_endpoint()
         {
-            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/{1}", Onfido.Settings.ApiVersion, "applicants"));
+            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/{1}", Onfido.Settings.GetApiVersion(), "applicants"));
         }
     }
 
@@ -86,7 +86,7 @@ namespace Onfido.Test.Integration
             stubResponse.Content = new StringContent(ApplicantGenerator.Json());
 
             HttpClient.Stub(client => client.Post(Arg<Uri>.Is.Anything, Arg<HttpContent>.Is.Anything))
-                .WhenCalled(c => { throw new Exception("Applicant find should use GET"); });                
+                .WhenCalled(c => { throw new Exception("Applicant find should use GET"); });
             HttpClient.Stub(client => client.Get(Arg<Uri>.Is.Anything))
                 .Return(stubResponse)
                 .WhenCalled(c => { UriUsed = (Uri)c.Arguments[0]; });
@@ -101,7 +101,7 @@ namespace Onfido.Test.Integration
         [TestMethod]
         public override void Should_have_called_correct_endpoint()
         {
-            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/{1}/{2}", Onfido.Settings.ApiVersion, "applicants", _applicantFindId));
+            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/{1}/{2}", Onfido.Settings.GetApiVersion(), "applicants", _applicantFindId));
         }
     }
 
@@ -133,7 +133,7 @@ namespace Onfido.Test.Integration
             Assert.AreEqual(pathQuerySplit.Length, 2);
 
             var path = pathQuerySplit[0];
-            Assert.AreEqual(path, string.Format("/{0}/{1}", Onfido.Settings.ApiVersion, "applicants"));
+            Assert.AreEqual(path, string.Format("/{0}/{1}", Onfido.Settings.GetApiVersion(), "applicants"));
 
             var query = HttpUtility.ParseQueryString(pathQuerySplit[1]);
             Assert.AreEqual(Int32.Parse(query["page"]), PageUsed);
@@ -172,7 +172,7 @@ namespace Onfido.Test.Integration
             Assert.AreEqual(pathQuerySplit.Length, 2);
 
             var path = pathQuerySplit[0];
-            Assert.AreEqual(path, string.Format("/{0}/{1}", Onfido.Settings.ApiVersion, "applicants"));
+            Assert.AreEqual(path, string.Format("/{0}/{1}", Onfido.Settings.GetApiVersion(), "applicants"));
 
             var query = HttpUtility.ParseQueryString(pathQuerySplit[1]);
             Assert.AreEqual(Int32.Parse(query["page"]), PageUsed);

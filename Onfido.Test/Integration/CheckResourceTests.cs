@@ -73,7 +73,7 @@ namespace Onfido.Test.Integration
         [TestMethod]
         public override void Should_have_called_correct_endpoint()
         {
-            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/applicants/{1}/checks", Settings.ApiVersion, CheckGenerator.ApplicantId));
+            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/applicants/{1}/checks", Settings.GetApiVersion(), CheckGenerator.ApplicantId));
         }
     }
 
@@ -101,7 +101,7 @@ namespace Onfido.Test.Integration
         [TestMethod]
         public override void Should_have_called_correct_endpoint()
         {
-            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/applicants/{1}/checks/{2}", Settings.ApiVersion, CheckGenerator.ApplicantId, CheckGenerator.CheckId));
+            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/applicants/{1}/checks/{2}", Settings.GetApiVersion(), CheckGenerator.ApplicantId, CheckGenerator.CheckId));
         }
     }
 
@@ -130,7 +130,7 @@ namespace Onfido.Test.Integration
         [TestMethod]
         public override void Should_have_called_correct_endpoint()
         {
-            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/applicants/{1}/checks", Settings.ApiVersion, CheckGenerator.ApplicantId));
+            Assert.AreEqual(UriUsed.PathAndQuery, string.Format("/{0}/applicants/{1}/checks", Settings.GetApiVersion(), CheckGenerator.ApplicantId));
         }
     }
 }
