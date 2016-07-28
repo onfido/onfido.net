@@ -18,6 +18,9 @@ namespace Onfido.Entities
         [JsonProperty("status")]
         public string Status;
 
+        [JsonProperty("variant")]
+        public string Variant;
+
         [JsonProperty("result")]
         public string Result;
 
