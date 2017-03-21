@@ -40,6 +40,9 @@ namespace Onfido.Entities
         [JsonProperty("mobile")]
         public string Mobile;
 
+        [JsonProperty("email")]
+        public string Email;
+
         [JsonProperty("country")]
         public string Country;
 
